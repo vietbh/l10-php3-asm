@@ -71,8 +71,8 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="{{ route('tin.index') }}"><img src="" alt=""></a>
-                                    <span>VT Page</span>
+                                    <a href="{{ route('tin.index') }}"><img src="upload/images/Logo-Tinh-Ba-Ria-Vung-Tau.png" width="70" height="70">
+                                    <span class="text-warning">VungTau Page</span></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
@@ -105,6 +105,7 @@
 
    @yield('content')
     
+   
    <footer>
        <!-- Footer Start-->
        <div class="footer-area footer-padding fix">
