@@ -10,17 +10,24 @@ class TinController extends Controller
     public function index()
     {
         //
-        $tins = DB::table('tins')
-        ->select('id','title','content','created_at')->limit(5)->get();
+        $tins_left = DB::table('tins')
+        ->select()->paginate(3);
+        $tins_right = DB::table('tins')
+        ->select()->where('first_rate','1')->orderBy('views','desc')->paginate(5);
         $tinTL = DB::table('categories')
         ->select('id','category_nm')
         ->where('lang','vi')
         ->get();
+        $tinTL_en = DB::table('categories')
+        ->select('id','category_nm')
+        ->where('lang','en')
+        ->paginate(4);
+        $data= ['tinTL'=>$tinTL , 'tinTL_en'=>$tinTL_en,'tins' => $tins_left , 'tins_right' => $tins_right];
         if(!$tinTL){
             abort(Response::HTTP_NO_CONTENT);
 
         }
-        return view('Tin.index',['tins' => $tins] ,['tinTL'=>$tinTL]);
+        return view('Tin.index', $data);
     }
 
     
